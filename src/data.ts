@@ -1,4 +1,7 @@
 import { TimelineExperience, EducationItem, CertificationItem, SkillItem, CareerMilestone } from './types';
+import wesleyLogo from './assets/images/wesley_logo.png';
+import iimcLogo from './assets/images/iimc_logo.png';
+import sriChaitanyaLogo from './assets/images/srichaitanya_logo.png';
 
 export const PERSONAL_INFO = {
   name: 'Hassan Mohammad',
@@ -166,7 +169,8 @@ export const EDUCATION_DATA: EducationItem[] = [
     startYear: 2011,
     endYear: 2013,
     level: 'Master’s Degree',
-    location: 'Hyderabad, Telangana, India'
+    location: 'Hyderabad, Telangana, India',
+    logoUrl: wesleyLogo
   },
   {
     id: 'edu-iimc-bcom',
@@ -178,7 +182,8 @@ export const EDUCATION_DATA: EducationItem[] = [
     startYear: 2007,
     endYear: 2010,
     level: 'Bachelor’s Degree',
-    location: 'Hyderabad, Telangana, India'
+    location: 'Hyderabad, Telangana, India',
+    logoUrl: iimcLogo
   },
   {
     id: 'edu-sri-chaitanya',
@@ -190,7 +195,8 @@ export const EDUCATION_DATA: EducationItem[] = [
     startYear: 2005,
     endYear: 2007,
     level: 'Intermediate (10+2)',
-    location: 'Hyderabad, Telangana, India'
+    location: 'Hyderabad, Telangana, India',
+    logoUrl: sriChaitanyaLogo
   },
   {
     id: 'edu-nalanda-high-school',

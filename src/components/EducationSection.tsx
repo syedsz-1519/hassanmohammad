@@ -111,17 +111,30 @@ export const EducationSection: React.FC = () => {
                 </span>
               </div>
 
-              <div>
-                <h3 className="font-display font-extrabold text-xl text-[#0B1220] tracking-tight">
-                  {item.institution}
-                </h3>
-                <p className="text-sm font-semibold text-[#FF8A00] mt-1">
-                  {item.degree}
-                </p>
-                {item.field && (
-                  <p className="text-xs text-[#5B6472] mt-0.5 font-mono">
-                    Specialization: {item.field}
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-display font-extrabold text-xl text-[#0B1220] tracking-tight">
+                    {item.institution}
+                  </h3>
+                  <p className="text-sm font-semibold text-[#FF8A00] mt-1">
+                    {item.degree}
                   </p>
+                  {item.field && (
+                    <p className="text-xs text-[#5B6472] mt-0.5 font-mono">
+                      Specialization: {item.field}
+                    </p>
+                  )}
+                </div>
+                {item.logoUrl ? (
+                  <img
+                    src={item.logoUrl}
+                    alt={`${item.institution} logo`}
+                    className="w-12 h-12 object-contain rounded-xl bg-white p-1.5 border border-[#E4E9F0] shadow-sm shrink-0"
+                  />
+                ) : (
+                  <div className="w-12 h-12 rounded-xl bg-[#FF8A00]/10 border border-[#FF8A00]/20 flex items-center justify-center shrink-0">
+                    <School className="w-6 h-6 text-[#FF8A00]" />
+                  </div>
                 )}
               </div>
             </div>

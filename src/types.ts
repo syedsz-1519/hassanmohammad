@@ -30,6 +30,7 @@ export interface EducationItem {
   grade?: string;
   coursework?: string[];
   location?: string;
+  logoUrl?: string;
 }
 
 export interface CertificationItem {
