@@ -1,15 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ShieldCheck, ChevronDown } from 'lucide-react';
+import { ShieldCheck, ChevronDown, FileText } from 'lucide-react';
 import { PERSONAL_INFO } from '../data';
 import { SlideId } from '../types';
 import heroBgImage from '../assets/images/hero_desk_bg_1786819534034.jpg';
 
 interface HeroSectionProps {
   onNavigate: (slide: SlideId) => void;
+  onOpenResume?: () => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, onOpenResume }) => {
   const sectionRef = useRef<HTMLElement>(null);
   
   // Parallax scroll calculations
@@ -106,6 +107,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-3 pt-2">
+          {onOpenResume && (
+            <button
+              onClick={onOpenResume}
+              id="hero-view-resume-btn"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#0F62FE] to-[#2563EB] text-white text-xs font-bold tracking-wider font-mono hover:brightness-110 transition-all shadow-lg flex items-center gap-2 cursor-pointer border border-blue-400/30"
+            >
+              <FileText className="w-4 h-4 text-white" />
+              <span>VIEW RESUME / CV</span>
+            </button>
+          )}
+
           <button
             onClick={() => onNavigate('experience')}
             id="hero-explore-exp-btn"

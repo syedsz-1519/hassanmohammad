@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Home, Briefcase, GraduationCap, Wrench, Mail } from 'lucide-react';
+import { Home, Briefcase, GraduationCap, Wrench, Mail, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SlideId } from '../types';
 
 interface ModuleRailProps {
   activeSlide: SlideId;
   onNavigate: (slide: SlideId) => void;
+  onOpenResume?: () => void;
 }
 
 interface NavItem {
@@ -86,7 +87,8 @@ const NAV_ITEMS: NavItem[] = [
 
 export const ModuleRail: React.FC<ModuleRailProps> = ({
   activeSlide,
-  onNavigate
+  onNavigate,
+  onOpenResume
 }) => {
   const [hoveredItem, setHoveredItem] = useState<SlideId | null>(null);
 
@@ -173,6 +175,20 @@ export const ModuleRail: React.FC<ModuleRailProps> = ({
             </div>
           );
         })}
+
+        {/* Dedicated Resume Action Button in Rail */}
+        {onOpenResume && (
+          <div className="pt-2 border-t border-white/10">
+            <button
+              onClick={onOpenResume}
+              className="relative flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#0F62FE]/20 hover:bg-[#0F62FE]/30 text-[#5FA8FF] hover:text-white border border-[#0F62FE]/30 transition-all cursor-pointer w-full text-left font-mono text-xs font-bold"
+              title="View Executive Resume"
+            >
+              <FileText className="w-4 h-4 text-[#0F62FE] shrink-0" />
+              <span>Resume</span>
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Mobile Bottom Floating Navigation Bar */}
@@ -204,7 +220,20 @@ export const ModuleRail: React.FC<ModuleRailProps> = ({
             </button>
           );
         })}
+
+        {onOpenResume && (
+          <button
+            onClick={onOpenResume}
+            className="flex flex-col items-center justify-center px-2.5 py-1.5 rounded-xl bg-[#0F62FE]/30 text-white border border-[#0F62FE]/40 transition-all cursor-pointer"
+          >
+            <FileText className="w-4 h-4 text-[#5FA8FF]" />
+            <span className="text-[10px] font-mono font-bold mt-0.5 tracking-tight text-[#5FA8FF]">
+              CV
+            </span>
+          </button>
+        )}
       </nav>
     </>
   );
 };
+

@@ -9,10 +9,12 @@ import { EducationSection } from './components/EducationSection';
 import { SkillsSection } from './components/SkillsSection';
 import { ContactSection } from './components/ContactSection';
 import { SectionDivider } from './components/SectionDivider';
+import { ResumeModal } from './components/ResumeModal';
 
 export default function App() {
   const [activeSlide, setActiveSlide] = useState<SlideId>('hero');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const isScrollingRef = useRef(false);
 
   // Motion scroll progress
@@ -108,13 +110,20 @@ export default function App() {
       </div>
 
       {/* Left Persistent Module Rail */}
-      <ModuleRail activeSlide={activeSlide} onNavigate={scrollToSlide} />
+      <ModuleRail
+        activeSlide={activeSlide}
+        onNavigate={scrollToSlide}
+        onOpenResume={() => setIsResumeOpen(true)}
+      />
 
       {/* Main Content Area */}
       <main className="w-full flex flex-col">
         {/* Section 1: Hero */}
         <div className="w-full">
-          <HeroSection onNavigate={scrollToSlide} />
+          <HeroSection
+            onNavigate={scrollToSlide}
+            onOpenResume={() => setIsResumeOpen(true)}
+          />
         </div>
 
         {/* Section Divider: Hero to Experience */}
@@ -167,6 +176,12 @@ export default function App() {
           <ContactSection />
         </motion.div>
       </main>
+
+      {/* Interactive Resume Modal */}
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
 
       {/* Floating 'Back to Top' Button */}
       <AnimatePresence>
